@@ -1,0 +1,13 @@
+name: "ChaosCore"
+version: "${version}"
+main: "de.chaosolymp.core.CorePlugin"
+authors: ["Crousus", "DeepRobin"]
+description: "The core."
+database: true
+api-version: "1.16"
+website: "https://chaosolymp.de/"
+softdepend: ["Vault", "ProtocolLib"]
+commands:
+  "core":
+    description: "Plugin information"
+    aliases: ["chaos-core"]
