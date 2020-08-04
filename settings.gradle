@@ -1,0 +1,6 @@
+rootProject.name = 'chaos-core'
+include 'chaos-core-bungee'
+include 'chaos-core-bukkit'
+include 'chaos-core-universal'
+include 'chaos-core-common'
+

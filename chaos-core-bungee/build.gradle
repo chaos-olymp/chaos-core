@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id "org.zeroturnaround.gradle.jrebel"
+    id "com.github.johnrengelman.shadow"
+}
+
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+artifacts {
+    archives shadowJar
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+}
+
+dependencies {
+    compileOnly group: 'net.md-5', name: 'bungeecord-api', version: '1.16-R0.3'
+    compile project(":chaos-core-common")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+processResources {
+    inputs.property "version", project.version
+    from(sourceSets.main.resources.srcDirs) {
+        include 'bungee.yml'
+        expand 'version': project.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'bungee.yml'
+    }
+}
