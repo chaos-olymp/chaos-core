@@ -62,5 +62,29 @@ publishing {
         gpr(MavenPublication) {
             from(components.java)
         }
+    artifacts {
+        shadow(tasks.shadowJar.archivePath) {
+            builtBy shadowJar
+        }
+    }
+}
+
+
+group 'de.chaosolymp'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+subprojects {
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
     }
 }

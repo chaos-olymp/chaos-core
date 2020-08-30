@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(":chaos-core-common")
+    compile project(":chaos-core-bukkit")
+    compile project(":chaos-core-bungee")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
