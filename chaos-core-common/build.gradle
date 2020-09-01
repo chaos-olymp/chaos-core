@@ -30,7 +30,7 @@ jar {
 }
 
 shadowJar {
-    relocate('org.jetbrains.annotations', 'de.chaosolymp.core.lib..jetbrains.annotations')
+    relocate('org.jetbrains.annotations', 'de.chaosolymp.core.lib.jetbrains.annotations')
     relocate('org.intellij.lang.annotations', 'de.chaosolymp.core.lib.idea.annotations')
     relocate('org.slf4j', "de.chaosolymp.core.lib.slf4j")
     relocate('com.zaxxer.hikari', "de.chaosolymp.core.lib.hikari")
