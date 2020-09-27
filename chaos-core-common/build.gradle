@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'de.chaosolymp'
-version '1.0-SNAPSHOT'
+version rootProject.version
 
 sourceCompatibility = 1.8
 
@@ -21,24 +21,17 @@ repositories {
     mavenCentral()
 }
 
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'DeepTickets',
-                'Implementation-Version': rootProject.version
-    }
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.jetbrains', name: 'annotations', version: '19.0.0'
+    compile group: "com.zaxxer", name: "HikariCP", version: "3.4.5"
 }
 
 shadowJar {
+    configurations = [project.configurations.compile]
     relocate('org.jetbrains.annotations', 'de.chaosolymp.core.lib.jetbrains.annotations')
     relocate('org.intellij.lang.annotations', 'de.chaosolymp.core.lib.idea.annotations')
     relocate('org.slf4j', "de.chaosolymp.core.lib.slf4j")
     relocate('com.zaxxer.hikari', "de.chaosolymp.core.lib.hikari")
     version = version
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile group: 'org.jetbrains', name: 'annotations', version: '19.0.0'
-    compile group: "com.zaxxer", name: "HikariCP", version: "3.4.5"
 }

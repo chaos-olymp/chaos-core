@@ -1,6 +1,7 @@
 package de.chaosolymp.core.bukkit;
 
 import de.chaosolymp.core.bukkit.listener.MessageListener;
+import de.chaosolymp.core.bukkit.listener.ServerMessageListener;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -11,6 +12,7 @@ public final class BukkitPlugin extends JavaPlugin {
         final long startTime = System.currentTimeMillis();
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new MessageListener(this));
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        this.getServer().getPluginManager().registerEvents(new ServerMessageListener(this), this);
         this.getLogger().info(String.format("Plugin warmup finished (Took %dms).", System.currentTimeMillis() - startTime));
     }
 
